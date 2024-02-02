@@ -1,0 +1,23 @@
+.navbar{
+    padding: 15px 0;
+    background: #23180d;
+}
+.navbar_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form_control{
+    display: flex;
+}
+.form_control input {
+    height: 40px;
+    width: 250px;
+    padding: 5px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 24px;
+}
+.form_control button{
+    display: none;
+}

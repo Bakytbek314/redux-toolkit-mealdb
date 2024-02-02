@@ -1,0 +1,93 @@
+.home_search{
+    width: 100%;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    display: flex;
+    justify-content: center;
+    padding: 35px 0;
+}
+.home_search input{
+    width: 350px;
+    font-size: 15px;
+    height: 35px;
+    border-radius: 5px 0 0 5px;
+    border-left: none;
+    border: none;
+    padding: 5px;
+    outline: none;
+}
+.home_search button{
+    background-color: #b8b8b8;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    height: 35px;
+    border: none;
+    width: 50px;
+}
+
+.meal_item{
+    padding: 30px;
+
+}
+.meal_item h3 {
+    color: #fff;
+    padding: 20px 0 20px 0;
+    text-align: center;
+    font-size: 22px;
+}
+.meal_item_content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+
+/* ? popular ingredients */
+.popular {
+    color: #fff;
+    padding: 30px 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff; 
+}
+.popular h3 {
+    text-align: center;
+}
+.popular_ingredients{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ? random meals */
+.random_meals {
+    padding: 0 0 30px 0;
+}
+.random_content h3 {
+    text-align: center;
+    color: #fff;
+    margin: 30px 0 20px 0;
+}
+.random_images {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+/* ?  random ingredients */
+.random_ingredients_title{
+    margin: 20px 0;
+    padding: 30px 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+.random_ingredients_title h3 {
+    color: #fff;
+    text-align: center;
+}
+.random_ingredient{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
