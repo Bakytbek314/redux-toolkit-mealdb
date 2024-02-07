@@ -1,0 +1,27 @@
+.content {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+    letter-spacing: 10px;
+
+}
+
+.content h2 {
+    color: #d57d1f;
+    cursor: pointer;
+}
+
+.content h2:hover {
+    color: orange;
+}
+
+.content span{
+    font-weight: 800;
+    scale: 1.6;
+}
+
+.content span:last-child {
+    display: none;
+}

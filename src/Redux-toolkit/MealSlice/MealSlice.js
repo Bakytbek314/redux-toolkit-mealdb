@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import instance from "../../http/settings";
 
+
 const initialState = {
   latest: [],
   infoMeal: [],
@@ -10,6 +11,9 @@ const initialState = {
   text: "",
   randomMeal: [],
   search: [],
+  country: [],
+  countryInfo: [],
+  alfavitMeal: [],
 };
 
 export const getLatestMeal = createAsyncThunk(
@@ -86,6 +90,30 @@ export const getSearchMeals = createAsyncThunk(
   }
 )
 
+export const getCountryMeals = createAsyncThunk(
+  "country/getCountryMeals",
+  async (_, {rejectWithValue, dispatch}) => {
+    const result = await instance.get("list.php?a=list")
+    dispatch(getCountry(result.data.meals))
+  }
+)
+
+export const getCountryInfoMeal = createAsyncThunk(
+  "countryInfo/getCoutryInfoMeal",
+  async (elem, {rejectWithValue, dispatch}) => {
+    const res = await instance.get(`filter.php?a=${elem}`)
+    dispatch(getCountryInfo(res.data.meals))
+  }
+)
+
+export const getAlfavitMeals = createAsyncThunk(
+  'alfavitMeal/getAlfavitMeals',
+  async (elem, {rejectWithValue, dispatch}) => {
+    const res = await instance.get(`search.php?f=${elem}`)
+    dispatch(getAlfavitMeal(res.data.meals))
+  }
+)
+
 const mealSlice = createSlice({
   name: "products",
   initialState,
@@ -113,6 +141,15 @@ const mealSlice = createSlice({
     },
     getSearchMeal: (state, action) => {
       state.search = action.payload
+    },
+    getCountry: (state, action) => {
+      state.country = action.payload
+    },
+    getCountryInfo: (state, action) => {
+      state.countryInfo = action.payload
+    },
+    getAlfavitMeal: (state, action) => {
+      state.alfavitMeal = action.payload
     }
   },
 });
@@ -124,6 +161,10 @@ export const { latestMeal,
                 popularInfoMeal,
                 onDescription,
                 getRandom,
-                getSearchMeal } = mealSlice.actions;
+                getSearchMeal,
+                getCountry,
+                getCountryInfo,
+                getAlfavitMeal,
+               } = mealSlice.actions;
 
 export default mealSlice.reducer;

@@ -6,12 +6,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import PopularIngredients from "../../Components/Popular-ingredients";
 import { onDescription } from "../../Redux-toolkit/MealSlice/MealSlice";
+import Alfavit from "../../Components/Alfavit/Alfavit";
 
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { latest, popular, randomMeal, randomIngredient } = useSelector((state) => state.products);
+  const { latest, popular, randomMeal, randomIngredient, country } = useSelector((state) => state.products);
 
   const handleMealInfo = (id, title) => {
     navigate(`/meal/${id}/${title}`);
@@ -32,22 +33,26 @@ const Home = () => {
 
   const randomItem = [];
 
-  for(let i = 0; i < 4; i++){
+  for (let i = 0; i < 4; i++) {
     let randomIndex = Math.floor(Math.random() * randomIngredient.length);
     randomItem.push(randomIngredient[randomIndex]);
+  }
+
+  const countryMeals = (title) => {
+    navigate(`/meals/${title}`)
   }
 
   const [input, setInput] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault ();
+    e.preventDefault();
     navigate(`/search/${input}`);
   }
 
   return (
     <div className="container">
       <form className={styles.home_search} onSubmit={handleSubmit}>
-        <input type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
+        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
         <button type="submit">
           <i className="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -116,6 +121,28 @@ const Home = () => {
             )}
           />
         </div>
+      </div>
+      <div className={styles.country}>
+        <h3>Country</h3>
+        <div className={styles.country_meals}>
+          <List
+            items={country}
+            renderItem={(elem, i) => (
+              <div onClick={() => countryMeals(elem.strArea)} className={styles.flags}>
+                <img src={`https://www.themealdb.com/images/icons/flags/big/64/${elem.strArea.substr(
+                  0,
+                  2
+                )}.png`} alt="" />
+              </div>
+            )}
+          />
+        </div>
+      </div>
+      <div className={styles.alfavit}>
+              <h3>Browse By Name</h3>
+              <div className={styles.alfavit_content}>
+                <Alfavit/>
+              </div>
       </div>
     </div>
   );
